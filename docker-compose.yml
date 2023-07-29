@@ -1,0 +1,1 @@
+version: '3'networks:  laravel-app:    driver: bridgeservices:  app:    build:      context: ./code      dockerfile: Dockerfile    image: core_application    container_name: laravel-app    volumes:      - ./code:/var/www    ports:      - "8000:9000"    networks:      laravel-app:
