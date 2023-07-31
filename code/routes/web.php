@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "docker initialization was successful." . "<br>" . "<a href='https://github.com/Ahmadreza-sharif'>give star to my Repository</a>";
 });
