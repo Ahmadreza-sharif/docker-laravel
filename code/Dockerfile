@@ -1,6 +1,13 @@
 # Use the official PHP image as the base image
 FROM php:8.2-fpm
 
+# Arguments
+ARG user
+ARG uid
+
+# Clear Cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev zip unzip vim
 
