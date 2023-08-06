@@ -49,6 +49,10 @@ RUN chmod -R 777 storage bootstrap/cache public
 # Expose the port for the PHP-FPM server
 EXPOSE 9000
 
+# CREATE USER AND GIVE PROJECT PERMISSION
+RUN groupadd -g 1000 sharifGroup && useradd -u 1000 -g 1000 sharif
+USER sharif
+
 # Running the composer
 COPY ./.docker/entrypoint.sh /usr/local/bin/entrypoint
 RUN chmod +x /usr/local/bin/entrypoint
