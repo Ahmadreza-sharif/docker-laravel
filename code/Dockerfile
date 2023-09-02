@@ -33,8 +33,6 @@ RUN install-php-extensions tokenizer
 RUN install-php-extensions pdo_pgsql
 RUN install-php-extensions pgsql
 RUN install-php-extensions opcache
-RUN install-php-extensions redis
-RUN install-php-extensions gd
 RUN install-php-extensions zip
 
 # Set the working directory
@@ -51,12 +49,13 @@ EXPOSE 9000
 
 # CREATE USER AND GIVE PROJECT PERMISSION
 RUN groupadd -g 1000 sharifGroup && useradd -u 1000 -g 1000 sharif
-USER sharif
 
 # Running the composer
 COPY ./.docker/entrypoint.sh /usr/local/bin/entrypoint
 RUN chmod +x /usr/local/bin/entrypoint
 ENTRYPOINT ["entrypoint"]
+
+USER sharif
 
 # Start PHP-FPM
 CMD ["php-fpm"]
